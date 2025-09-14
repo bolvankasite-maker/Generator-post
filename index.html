@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Random Internet Post Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    header {
+      margin-top: 40px;
+      text-align: center;
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 0.2em;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    button {
+      background-color: #FF4500;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-bottom: 40px;
+    }
+    button:hover {
+      background-color: #FF4500;
+    }
+    #post-container {
+      width: 90%;
+      max-width: 720px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      padding: 20px;
+      margin-bottom: 40px;
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    #post-container a {
+      color: #FF4500;
+      text-decoration: none;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+    #post-container a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Random Internet Post Generator ▸</h1>
+    <p></p>
+  </header>
+
+  <button id="generateBtn">Сгенерируйте пост!</button>
+
+  <div id="post-container">
+    <!-- Здесь будет отображаться пост -->
+  </div>
+
+  <footer>
+    &copy; 2025 Генератор постов в интернете
+  </footer>
+
+  <script>
+    // Массив с постами Reddit (название и ссылка)
+    const redditPosts = [
+      {
+        title: "Ответы mail.ru | Я сигма бой? | 5 ответов",
+        url: "https://otvet.mail.ru/question/242622323"
+      },
+      {
+        title: "Ответы mail.ru | почему он считает себя троллем если все что он может это оскорблять | 42 ответа",
+        url: "https://otvet.mail.ru/question/267812875"
+      },
+      {
+        title: "Ответы mail.ru | Кто ваш лучший друк | 37 ответов",
+        url: "https://otvet.mail.ru/question/267814029"
+      },
+      {
+        title: "Ответы mail.ru | Справедлива ли плата за интернет в районе 1000₽/мес когда плата за воду-канализацию, газ и свет всё вместе менее 1000? | 38 ответов",
+        url: "https://otvet.mail.ru/question/267812660"
+      },
+      {
+        title: "Ответы mail.ru | МОЙ САМЫЙ СТРАШНЫй КОШМАР СТАТЬ ПЕДОФИЛКОЙ СБЫЛСЯ ДА СБЫЛСЯ?! | 30 ответов",
+        url: "https://otvet.mail.ru/question/267814209"
+      }
+    ];
+
+    const postContainer = document.getElementById('post-container');
+    const btn = document.getElementById('generateBtn');
+
+    function getRandomPost() {
+      const randomIndex = Math.floor(Math.random() * redditPosts.length);
+      return redditPosts[randomIndex];
+    }
+
+    function loadRandomPost() {
+      const post = getRandomPost();
+      postContainer.innerHTML = `<a href="${post.url}" target="_blank" rel="noopener noreferrer">${post.title}</a>`;
+    }
+
+    btn.addEventListener('click', loadRandomPost);
+
+    // Загрузить случайный пост при загрузке страницы
+    loadRandomPost();
+  </script>
+</body>
+</html>
